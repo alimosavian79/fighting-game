@@ -1,135 +1,41 @@
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Press Start 2P", cursive;
-    }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/template.css" />
+  </head>
 
-    .fighter-name {
-      position: absolute;
-      left: 0;
-      top: -45px;
-      color: #fff;
-      font-weight: 400;
-    }
-    .fighter-name.right {
-      position: absolute;
-      right: 0;
-      left: unset;
-      top: -45px;
-      color: #fff;
-      font-weight: 400;
-    }
-
-    .winner-modal {
-      position: absolute;
-      color: white;
-      align-items: center;
-      justify-content: center;
-      display: none;
-      width: 300px;
-      height: 150px;
-      margin: auto;
-      background: #818cf8;
-      border: 4px solid white;
-      right: 0;
-      top: -155px;
-      left: 0;
-      bottom: 0;
-    }
-  </style>
-</head>
-
-<body>
-  <div style="position: relative; display: inline-block">
-    <div
-      style="
-        position: absolute;
-        display: flex;
-        width: 100%;
-        align-items: center;
-        padding: 20px;
-      "
-    >
-      <div
-        style="
-          position: relative;
-          width: 100%;
-          display: flex;
-          justify-content: flex-end;
-          border: 4px solid white;
-          border-right: none;
-        "
-      >
-        <h6 class="fighter-name">Samurai Mack</h6>
-        <div style="background-color: red; height: 30px; width: 100%"></div>
-        <div
-          id="playerHealth"
-          style="
-            position: absolute;
-            background: #818cf8;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-          "
-        ></div>
+  <body>
+    <div style="position: relative; display: inline-block">
+      <div class="container">
+        <div class="health-container">
+          <h6 class="fighter-name">Samurai Mack</h6>
+          <div class="health-bg"></div>
+          <div class="player-health" id="playerHealth"></div>
+        </div>
+        <div id="timer" class="timer"></div>
+        <div class="health-container right">
+          <h6 class="fighter-name right">Kenji</h6>
+          <div class="health-bg"></div>
+          <div id="enemyHealth" class="player-health"></div>
+        </div>
       </div>
-      <div
-        id="timer"
-        style="
-          background-color: black;
-          width: 100px;
-          height: 50px;
-          flex-shrink: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          border: 4px solid white;
-        "
-      >
-        10
-      </div>
-      <div
-        style="
-          position: relative;
-          width: 100%;
-          border: 4px solid white;
-          border-left: none;
-        "
-      >
-        <h6 class="fighter-name right">Kenji</h6>
-        <div style="background-color: red; height: 30px"></div>
-        <div
-          id="enemyHealth"
-          style="
-            position: absolute;
-            background: #818cf8;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-          "
-        ></div>
-      </div>
+      <div id="displayText" class="winner-modal"></div>
+      <canvas></canvas>
     </div>
-    <div id="displayText" class="winner-modal"></div>
-    <canvas></canvas>
-  </div>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-  <script src="js/classes.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="index.js"></script>
-</body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="js/classes.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
