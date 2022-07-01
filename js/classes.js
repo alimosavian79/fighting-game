@@ -104,8 +104,8 @@ class Fighter extends Sprite {
         }
     }
 
-    attack() {
-        this.switchSprite("attack1")
+    attack(attackType = "attack1") {
+        this.switchSprite(attackType)
         this.isAttacking = true
 
     }
@@ -128,7 +128,7 @@ class Fighter extends Sprite {
             return
         }
         // overwriting all other animation with attack
-        if (this.image === this.Sprites.attack1.image && this.frameCurrent < this.Sprites.attack1.framesMax - 1) {
+        if ((this.image === this.Sprites.attack1.image || this.image === this.Sprites.attack2.image) && this.frameCurrent < this.Sprites.attack1.framesMax - 1) {
             return
         }
         // overwriting all other animation with fighter get hit
@@ -164,6 +164,11 @@ class Fighter extends Sprite {
             case "attack1":
                 this.image = this.Sprites.attack1.image
                 this.framesMax = this.Sprites.attack1.framesMax
+                this.frameCurrent = 0
+                break
+            case "attack2":
+                this.image = this.Sprites.attack2.image
+                this.framesMax = this.Sprites.attack2.framesMax
                 this.frameCurrent = 0
                 break
             case "takeHit":
