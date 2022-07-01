@@ -30,7 +30,7 @@ const shop = new Sprite({
 
 const player = new Fighter({
     position: {
-        x: 0,
+        x: 80,
         y: 0
     },
     velocity: {
@@ -90,7 +90,7 @@ const player = new Fighter({
 
 const enemy = new Fighter({
     position: {
-        x: 400,
+        x: 900,
         y: 100
     },
     velocity: {
@@ -191,13 +191,13 @@ function animate() {
     // player movement
     player.velocity.x = 0
 
-    if (keys.a.pressed && player.lastKey === 'a') {
+    if (keys.a.pressed && player.lastKey === 'a' && player.position.x > 30) {
         player.velocity.x = -5
         player.switchSprite('run')
 
-    } else if (keys.d.pressed && player.lastKey === 'd') {
-        player.switchSprite('run')
+    } else if (keys.d.pressed && player.lastKey === 'd' && player.position.x < 950) {
         player.velocity.x = +5
+        player.switchSprite('run')
     } else {
         player.switchSprite('idle')
     }
@@ -210,10 +210,10 @@ function animate() {
 
     // enemy movement
     enemy.velocity.x = 0
-    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
+    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x > 0) {
         enemy.velocity.x = -5
         enemy.switchSprite('run')
-    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
+    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x < 940) {
         enemy.velocity.x = +5
         enemy.switchSprite('run')
     } else {
@@ -286,7 +286,9 @@ window.addEventListener('keydown', (event) => {
                 player.lastKey = 'a'
                 break
             case 'w':
-                player.velocity.y = -20
+                if (player.velocity.y === 0) {
+                    player.velocity.y = -20
+                }
                 break
             case ' ':
                 player.attack()
@@ -306,7 +308,9 @@ window.addEventListener('keydown', (event) => {
                 enemy.lastKey = 'ArrowLeft'
                 break
             case 'ArrowUp':
-                enemy.velocity.y = -20
+                if (enemy.velocity.y === 0) {
+                    enemy.velocity.y = -20
+                }
                 break
             case 'ArrowDown':
                 enemy.attack()
